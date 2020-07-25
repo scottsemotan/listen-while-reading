@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+
+    /* Animation properties */
+    .movie {
+      animation: movie 6s ease-out ;
+    }
+    .phone {
+      animation: phone 6s ease-out;
+    }
+    .byline {
+      animation: move-byline 6s linear ;
+    }
+    
+    /* Keyframes */
+    @keyframes movie {
+      0% {
+        opacity: 0;
+        transform: scale(1.5) translateY(-0.75em);
+      }
+      20% {
+        opacity: 1;
+      }
+      89% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      99% {
+        opacity: 0;
+        transform: translateZ(-1000em);
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes phone {
+      0% {
+        opacity: 0;
+        transform: scale(1.5) translateY(0.5em);
+      }
+      20% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      99% {
+        opacity: 0;
+        transform: translateZ(-1000em);
+      }
+      100% {
+        opacity: 1;
+      }
+
+    }
+    
+    @keyframes move-byline {
+      0% {
+        transform: translateZ(5em);
+      }
+      100% {
+        transform: translateZ(0);
+      }
+    }
+    
+    /* Make the 3D work on the container */
+    .movie-phone {
+      perspective: 800px;
+      transform-style: preserve3d;
+    }
+    
+    /* General styles and layout */
+    body {
+      background-image: url("https://cssanimation.rocks/demo/starwars/images/bg.jpg");
+    }
+
+    .enterDiv {
+        padding-left: 130px;
+        padding-top: 400px;
+    }
+    .enterLink {
+       justify-content: center;
+       background-color: yellow;
+       font-weight: bolder;
+       color: black;
+       height: 45px;
+       width: 300px;
+       font-size: 30px;
+       padding-left: 20px;
+    }
+
+    .movie-phone {
+      height: 17em;
+      left: 50%;
+      position: absolute;
+      top: 38%;
+      transform: translate(-50%, -50%);
+      width: 34em;
+    }
+    
+    .byline span {
+      display: inline-block;
+    }
+    
+    img {
+      width: 100%;
+    }
+    
+    .movie, .phone, .byline {
+      position: absolute;
+    }
+    
+    .movie {
+      top: -0.75em;
+    }
+    
+    .phone {
+      bottom: -0.5em;
+    }
+    
+    .byline {
+      color: #fff;
+      font-family: "ITC Serif Gothic", Lato;
+      font-size: 2.25em;
+      left: -2em;
+      letter-spacing: 0.4em;
+      right: -2em;
+      text-align: center;
+      text-transform: uppercase;
+      top: 42%;
+    }
+    
+    /*** Media queries for adjusting to different screen sizes ***/
+    
+    @media only screen and (max-width: 600px) {
+      .movie-phone {
+        font-size: 10px;
+      }
+    }
+    
+    @media only screen and (max-width: 480px) {
+      .movie-phone {
+        font-size: 7px;
+      }
+    }
+    
+    
+    
+    
+    </style>
+    
+    <title>Document</title>
+</head>
+<body>
+    
+<div class= container>
+    
+    <div class="movie-phone">
+        <img src="https://fontmeme.com/permalink/200710/c628abf435e7a8b0bd82da092bfe97b7.png" alt="movie" class="movie">
+        <img src="https://fontmeme.com/permalink/200710/3904b36794c9944ee6b61bd84021030b.png" alt="phone" class="phone">
+        <h2 class="byline" id="byline">A New Search</h2>
+      <div class="enterDiv">
+        <a href="movieSearch.html" class="enterLink" type="button" >Click Here to Enter</a>
+      </div>   
+      </div>
+        
+<!--
+<div class="search">
+    <button class="btn btn-success" id="getMultItems">Get List</button>
+    <button class="btn btn-success" id="getOneItem">Get One</button>
+</div>
+<br>
+    <div>
+        <div class="form-group">
+            ---- <label for="movieSelection">Select Movie</label> -----
+            <input type="text" class="form" id="movieSelection" aria-describedby="" placeholder="Enter movie choice">
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>   
+    </div>
+<br>
+    --------- Area for movie cards --------
+    <div id="movieBody">
+        <div class="card-deck" >
+            <div class="row" id="cards">
+            </div>
+        </div>
+    </div>
+-->
+</div>
+</body>
+</html>

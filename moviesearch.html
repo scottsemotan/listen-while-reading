@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        // confirm document is ready
+        $(document).ready(function () {
+            console.log("ready!");
+        
+        var movieList = document.getElementById('movieList');
+        var movieBody = document.getElementById('movieBody');
+        var mButton = document.getElementById("getMultItems"); 
+        var sButton = document.getElementById('getOneItem');
+        var submitButton = document.getElementById('submitButton')
+
+        var cards = document.getElementById("cards")
+
+
+        // Button to retrieve multiple items
+        mButton.addEventListener('click', function() {
+            var apiKey = 'b829fc58';
+            $.get(`https://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=legend`, function (data) {
+                addMultiple(data);
+            });
+        });
+
+        // Button to retrieve single item
+        sButton.addEventListener('click', function() {
+            var apiKey = 'b829fc58';
+            $.get(`https://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=batman`, function (data) {
+                addSingle(data);
+            });
+        });
+
+
+        // Search for items
+        submitButton.addEventListener('click', function() {
+            // getting the values for filters 
+            var movieSelection = document.getElementById('movieSelection').value;
+            var yearChoice = document.getElementById("releaseYear").value;
+            var typeChoice = document.getElementById("movieSeriesChoice").value;
+            var apiKey = 'b829fc58';
+            
+            if (movieSelection == "") {
+                    alert("Please add a movie to search");
+                }
+            // seems a variable can have a blank value and the url will still work as long as formatting is correct
+            $.get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${movieSelection}&y=${yearChoice}&type=${typeChoice}`, function (data) {
+                addMultiple(data);  
+                
+            });
+            
+        });
+
+        //---------------- FUNCTIONS ------------------------//
+
+        // function to get multiple items
+        function addMultiple(data) {
+            // clear the existing item in the div before adding items
+            cards.innerHTML = '';
+            for (var i = 0; i < data.Search.length; i++) { 
+                var title = data.Search[i].Title;
+                var year = data.Search[i].Year;
+                var imdbID = data.Search[i].imdbID;
+                var type = data.Search[i].Type;
+                var poster = data.Search[i].Poster;
+                
+                var movieContainer = document.createElement('div');
+
+                var movieInfo = 
+                `
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="${poster}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${title}</h5>
+                            <p class="card-text">Year: ${year}, IMDB ID: ${imdbID}, Type: ${type}</p>
+                        </div>
+                    </div>
+                </div>
+                `
+                // not appending since there is no child but concatenating
+                cards.innerHTML += movieInfo;
+                
+            }
+        }      
+
+
+
+        // function to get a single item
+        function addSingle(data) {
+            //Get random movie from array of searched items
+            var singleMovie = data.Search[Math.floor(Math.random() * data.Search.length)];      
+            var title = singleMovie.Title;
+            var year = singleMovie.Year;
+            var imdbID = singleMovie.imdbID;
+            var type = singleMovie.Type;
+            var poster = singleMovie.Poster;
+            // clear the existing item in the div before adding items
+            cards.innerHTML = '';
+            var movieContainer = document.createElement('div');
+
+            // using template literal to append items
+            var movieInfo = 
+                `
+                <div class="col-md-12">
+                    <div class="card">
+                        <img class="card-img-top" src="${poster}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${title}</h5>
+                            <p class="card-text">Year: ${year}, IMDB ID: ${imdbID}, Type: ${type}</p>
+                        </div>
+                    </div>
+                </div>
+                `  
+              // not appending since there is no child but concatenating
+              cards.innerHTML += movieInfo;
+        }      
+        
+    }); // <--- end of document readiness check
+    </script>
+
+<style>
+       body{
+        background-color: aliceblue;
+    }
+
+    h1{
+        font-size: 3em;
+        font-family: cursive;
+        text-shadow: darkgrey 3px 3px 3px;
+    }
+
+    .container{
+        text-align: center;
+        background-image: url("https://i.pinimg.com/originals/b7/28/15/b7281550966e19f7c2f62d77fa063747.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .btn {
+        margin: 5% 0;
+        box-shadow: grey 2px 2px;
+    }
+
+    .col-md-12{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+   
+</style>
+    
+    <title>Document</title>
+</head>
+<body>
+    
+<div class= container>
+    
+
+<div class="search">
+    <button class="btn btn-success" id="getMultItems">Get List</button>
+    <button class="btn btn-success" id="getOneItem">Get One</button>
+
+</div>
+<br>
+<div>
+    <div class="form-group">
+        <input type="text" class="form" id="movieSelection" aria-describedby="" placeholder="Enter movie choice">
+        <input type="text" class="form" id="movieSeriesChoice" aria-describedby="" placeholder="Movie or Series">
+        <input type="text" class="form" id="releaseYear" aria-describedby="" placeholder="Release Year">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>   
+</div>
+
+
+<br>
+
+    <!--- Area for movie cards --->
+    <div id="movieBody">
+        <div class="card-deck" >
+            <div class="row" id="cards">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
