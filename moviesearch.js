@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<<<<<<< HEAD
-    <script type="text/javascript">
-        // confirm document is ready
-        $(document).ready(function () {
-            console.log("ready!");
         
         var movieList = document.getElementById('movieList');
         var movieBody = document.getElementById('movieBody');
         var mButton = document.getElementById("getMultItems"); 
         var sButton = document.getElementById('getOneItem');
         var submitButton = document.getElementById('submitButton')
-
+        var apiKey = 'c366972e'
         var cards = document.getElementById("cards")
 
 
         // Button to retrieve multiple items
         mButton.addEventListener('click', function() {
-            var apiKey = 'b829fc58';
+            
             $.get(`https://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=legend`, function (data) {
                 addMultiple(data);
             });
@@ -29,7 +19,7 @@
 
         // Button to retrieve single item
         sButton.addEventListener('click', function() {
-            var apiKey = 'b829fc58';
+            
             $.get(`https://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=batman`, function (data) {
                 addSingle(data);
             });
@@ -42,7 +32,7 @@
             var movieSelection = document.getElementById('movieSelection').value;
             var yearChoice = document.getElementById("releaseYear").value;
             var typeChoice = document.getElementById("movieSeriesChoice").value;
-            var apiKey = 'b829fc58';
+
             
             if (movieSelection == "") {
                     alert("Please add a movie to search");
@@ -118,81 +108,5 @@
                 `  
               // not appending since there is no child but concatenating
               cards.innerHTML += movieInfo;
-        }      
-        
-    }); // <--- end of document readiness check
-    </script>
-
-<style>
-       body{
-        background-color: aliceblue;
-    }
-
-    h1{
-        font-size: 3em;
-        font-family: cursive;
-        text-shadow: darkgrey 3px 3px 3px;
-    }
-
-    .container{
-        text-align: center;
-        background-image: url("https://i.pinimg.com/originals/b7/28/15/b7281550966e19f7c2f62d77fa063747.jpg");
-        background-repeat: no-repeat;
-        background-size: 100%;
-    }
-    .btn {
-        margin: 5% 0;
-        box-shadow: grey 2px 2px;
-    }
-
-    .col-md-12{
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-   
-</style>
-=======
->>>>>>> 6c733abec8c077f9dcecc94348848ea854a0808e
-    
-    <title>Document</title>
-</head>
-<body>
-    
-<div class= container>
-    
-
-<div class="search">
-    <button class="btn btn-success" id="getMultItems">Get List</button>
-    <button class="btn btn-success" id="getOneItem">Get One</button>
-
-</div>
-<br>
-<div>
-    <div class="form-group">
-        <input type="text" class="form" id="movieSelection" aria-describedby="" placeholder="Enter movie choice">
-        <input type="text" class="form" id="movieSeriesChoice" aria-describedby="" placeholder="Movie or Series">
-        <input type="text" class="form" id="releaseYear" aria-describedby="" placeholder="Release Year">
-    </div>
-    <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>   
-</div>
-
-
-<br>
-
-    <!--- Area for movie cards --->
-    <div id="movieBody">
-        <div class="card-deck" >
-            <div class="row" id="cards">
-
-            </div>
-        </div>
-    </div>
-</div>
-<<<<<<< HEAD
-
-=======
-<script src="moviesearch.js"></script>
->>>>>>> 6c733abec8c077f9dcecc94348848ea854a0808e
-</body>
-</html>
+        }; // <--- end of document readiness check
+  
