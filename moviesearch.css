@@ -15,3 +15,11 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  #getMultItems {
+    background-color: #007bff;
+  }
+
+  #getOneItem {
+    background-color: #007bff;
+  }
