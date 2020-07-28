@@ -52,10 +52,12 @@ body, html {
 .dropbtn {
     background-color: #3498DB;
     color: white;
-    padding: 16px;
+    padding: top;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    height: 30px;
+    width: 80px;
   }
   
   /* Dropdown button on hover & focus */
