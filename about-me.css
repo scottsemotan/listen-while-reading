@@ -19,6 +19,10 @@ body, html {
       color: white
   }
 
+  .namePlate {
+      font-size: 25px;
+  }
+
   .figure-caption {
       color: white
   }
