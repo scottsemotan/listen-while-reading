@@ -24,6 +24,7 @@ var firebaseConfig = {
          // The signed-in user info.
          var user = result.user;
          document.location.href = 'moviesearch.html';
+         console.log(token);
          // ...
    }).catch(function(error) {
        // Handle Errors here.
@@ -37,4 +38,31 @@ var firebaseConfig = {
       // ...
    });
 }
+
+
+
+///Function to grab new user's signup info and grant access to search page.
+var signUp = document.getElementById('signUp');
+
+signUp.addEventListener('click', function(){
+  var formName = document.getElementById('formName').value
+  var formEmail = document.getElementById('formEmail').value
+  var formPass = document.getElementById('formPass').value
+  
+  if(formName == '' || formEmail == '' || formPass == '') {
+    alert("Please fill in form completely");
+  }
+ 
+  var signUpInfo = {
+    Name: formName,
+    Email: formEmail,
+    Password: formPass
+  }
+  console.log(signUpInfo);
+  
+  if(formName && formEmail && formPass) {
+    location = 'moviesearch.html';
+  }
+  
+});
 
