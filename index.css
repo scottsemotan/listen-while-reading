@@ -1,94 +1,11 @@
-    /* Animation properties */
-    .movie {
-        animation: movie 6s ease-out ;
-      }
-      .phone {
-        animation: phone 6s ease-out;
-      }
-      .byline {
-        animation: move-byline 6s linear ;
-      }
-      
-      /* Keyframes */
-      @keyframes movie {
-        0% {
-          opacity: 0;
-          transform: scale(1.5) translateY(-0.75em);
-        }
-        20% {
-          opacity: 1;
-        }
-        89% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        99% {
-          opacity: 0;
-          transform: translateZ(-1000em);
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      
-      @keyframes phone {
-        0% {
-          opacity: 0;
-          transform: scale(1.5) translateY(0.5em);
-        }
-        20% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        99% {
-          opacity: 0;
-          transform: translateZ(-1000em);
-        }
-        100% {
-          opacity: 1;
-        }
-  
-      }
-      
-      @keyframes move-byline {
-        0% {
-          transform: translateZ(5em);
-        }
-        100% {
-          transform: translateZ(0);
-        }
-      }
-      
-      /* Make the 3D work on the container */
-      .movie-phone {
-        perspective: 800px;
-        transform-style: preserve3d;
-      }
+    
       
       /* General styles and layout */
       body {
-        background-image: url("https://cssanimation.rocks/demo/starwars/images/bg.jpg");
+        background-color: black;
       }
   
-      .enterDiv {
-          padding-left: 130px;
-          padding-top: 400px;
-      }
-      .enterLink {
-         justify-content: center;
-         background-color: yellow;
-         font-weight: bolder;
-         color: black;
-         height: 45px;
-         width: 300px;
-         font-size: 30px;
-         padding-left: 20px;
-      }
-  
-      .movie-phone {
+      .soundflix {
         height: 17em;
         left: 50%;
         position: absolute;
@@ -105,8 +22,8 @@
         width: 100%;
       }
       
-      .movie, .phone, .byline {
-        position: absolute;
+      .byline {
+       
       }
       
       .movie {
@@ -118,28 +35,15 @@
       }
       
       .byline {
+        position: absolute;
         color: #fff;
         font-family: "ITC Serif Gothic", Lato;
-        font-size: 2.25em;
+        font-size: 3em;
         left: -2em;
-        letter-spacing: 0.4em;
+        letter-spacing: 0.2em;
         right: -2em;
         text-align: center;
         text-transform: uppercase;
-        top: 42%;
+        top: 50%;
       }
-      
-      /*** Media queries for adjusting to different screen sizes ***/
-      
-      @media only screen and (max-width: 600px) {
-        .movie-phone {
-          font-size: 10px;
-        }
-      }
-      
-      @media only screen and (max-width: 480px) {
-        .movie-phone {
-          font-size: 7px;
-        }
-      }
-      
+    
