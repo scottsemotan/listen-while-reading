@@ -1,0 +1,19 @@
+{
+  "name": "listen-while-reading",
+  "version": "1.0.0",
+  "description": "CSS - BootStrap/Materialize",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottsemotan/listen-while-reading.git"
+  },
+  "author": "Scott/Marcel/Rhonda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scottsemotan/listen-while-reading/issues"
+  },
+  "homepage": "https://github.com/scottsemotan/listen-while-reading#readme"
+}
