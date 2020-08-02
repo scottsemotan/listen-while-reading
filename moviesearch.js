@@ -1,79 +1,82 @@
+var movieList = document.getElementById('movieList');
+var movieBody = document.getElementById('movieBody');
+var submitButton = document.getElementById('submitButton')
+var apiKeyOMDB = 'c366972e'
+var apiTasteDive = '380370-ListenWh-NO41ULTO'
+var cards = document.getElementById("cards")
+var cardVideo = document.getElementById("cardVideo")
+// Search for items
+submitButton.addEventListener('click', function() { 
+   
+    var movieSelection = document.getElementById('movieSelection').value;
+    
+    if (movieSelection == "") {
+            alert("Please add a movie to search");
+        }
 
+    $.get(`https://www.omdbapi.com/?apikey=${apiKeyOMDB}&s=${movieSelection}`, function (data) {
+        movieSearch(data);  
         
-        var movieList = document.getElementById('movieList');
-        var movieBody = document.getElementById('movieBody');
-        var submitButton = document.getElementById('submitButton')
-        var apiKey = 'c366972e'
-        var cards = document.getElementById("cards")
-        // Search for items
-        submitButton.addEventListener('click', function() {
-            // getting the values for filters 
-            var movieSelection = document.getElementById('movieSelection').value;
-            
-            if (movieSelection == "") {
-                    alert("Please add a movie to search");
-                }
-            // seems a variable can have a blank value and the url will still work as long as formatting is correct
-            $.get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${movieSelection}`, function (data) {
-                movieSearch(data);  
-                
-            });
-            
-        });
-        //---------------- FUNCTIONS ------------------------//
-        // function to get multiple items
-        function movieSearch(data) {
-            // clear the existing item in the div before adding items
-            cards.innerHTML = '';
-            for (var i = 0; i < data.Search.length; i++) { 
-                var title = data.Search[i].Title;
-                var year = data.Search[i].Year;
-                var imdbID = data.Search[i].imdbID;
-                var type = data.Search[i].Type;
-                var poster = data.Search[i].Poster;
-                
-                var movieInfo = 
-                `
-                <div class="col-md-4">
-                    <div class="card m-3 mr-4">
-                        <img class="card-img-top" src="${poster}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">${title}</h5>
-                            <p class="card-text">Year: ${year}, IMDB ID: ${imdbID}, Type: ${type}</p>
-                        </div>
-                    </div>
+    });
+    
+});
+//-------------------FUNCTIONS ------------------------//
+function movieSearch(data) {
+    console.log(data);
+    cards.innerHTML = '';
+    for (var i = 0; i < data.Search.length; i++) {        
+        var title = data.Search[i].Title;
+        var poster = data.Search[i].Poster;
+        var movieInfo = 
+        `
+        <div class="col-md-4">
+            <div class="card m-3 mr-4">
+                <img class="card-img-top" src="${poster}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">${title}</h5>
                 </div>
-                <div class="col-md-7">
-                    <div class="card m-3">
-                        <div class="card-body">
-                        <p class="card-text">Plot:</p>
-                </div>
-                </div>
-                </div>
-                `
-                // not appending since there is no child but concatenating
-                cards.innerHTML += movieInfo;
-                
-            }
-        }
+            </div>
+        </div>
+        <div class="col-md-7">
+        <div class="embed-responsive embed-responsive-16by9 m-3">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dxQxgAfNzyE?rel=0" allowfullscreen></iframe>
+        </div>
+        <div class="card m-3">
+        <div class="card-body">
+        <p class="card-text">Plot:</p>
+</div>
+</div>
+        </div>
+        `
+        // not appending since there is no child but concatenating
+        cards.innerHTML += movieInfo;
+$.get(`https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?limit=1&info=1&q=movie:${title}&k=${apiTasteDive}`, function (data) {
+            videoSearch(data);
+})
 
-        /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+    function videoSearch(data) {
+    
+        cardVideo.innerHTML = '';
+        console.log(data);
+        for (var i = 0; i < data.length; i++) { 
+            var teaser = data.Similar.Info[i].wTeaser;
+            var video = data.Similar.Info[i].yID;
+            
+            var videoInfo = 
+            `
+            <div class="embed-responsive embed-responsive-16by9 m-3">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${video}?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="card m-3">
+            <div class="card-body">
+            <p class="card-text">${teaser}</p>
+            </div>
+            </div>
+            `
+            // not appending since there is no child but concatenating
+            cardVideo.innerHTML += videoInfo;
+            
         }
-      }
+        }    
     }
-  }
-  
+}
