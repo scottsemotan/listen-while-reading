@@ -1,19 +1,20 @@
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
+var granimInstance = new Granim({
+  element: '#canvas-complex',
+  direction: 'left-right',
+  isPausedWhenNotInView: true,
+  states : {
+      "default-state": {
+          gradients: [
+              [
+                  { color: '#833ab4', pos: .2 },
+                  { color: '#fd1d1d', pos: .8 },
+                  { color: '#38ef7d', pos: 1 }
+              ], [
+                  { color: '#40e0d0', pos: 0 },
+                  { color: '#ff8c00', pos: .2 },
+                  { color: '#ff0080', pos: .75 }
+              ],
+          ]
       }
-    }
   }
+});

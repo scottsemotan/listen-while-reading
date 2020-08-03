@@ -1,36 +1,11 @@
     
       
-      /* General styles and layout */
-      body {
+       /* General styles and layout */
+       body {
         background-color: black;
       }
-  
-      .soundflix {
-        height: 17em;
-        left: 50%;
-        position: absolute;
-        top: 38%;
-        transform: translate(-50%, -50%);
-        width: 34em;
-      }
       
-      .byline span {
-        display: inline-block;
-      }
-      
-      img {
-        width: 100%;
-      }
-      
-      .movie {
-        top: -0.75em;
-      }
-      
-      .phone {
-        bottom: -0.5em;
-      }
-      
-      .byline {
+      .siteName {
         position: absolute;
         color: #fff;
         font-family: "ITC Serif Gothic", Lato;
@@ -42,4 +17,15 @@
         text-transform: uppercase;
         top: 50%;
       }
+
+      #canvas-complex {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
     
