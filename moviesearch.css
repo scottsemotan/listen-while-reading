@@ -36,8 +36,7 @@ body {
 }
 
 #canvas-complex {
-    background: fixed;
-    position: absolute;
+    position: fixed;
     display: block;
     width: 100%;
     height: 100%;
@@ -45,4 +44,13 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
+
+    
+}
+
+#siteName {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    color: whitesmoke;
+
 }

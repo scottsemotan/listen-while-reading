@@ -20,21 +20,23 @@ var granimInstance = new Granim({
     }
 });
 
+
 var movieList = document.getElementById('movieList');
 var movieBody = document.getElementById('movieBody');
 var submitButton = document.getElementById('submitButton')
-var apiKeyOMDB = 'c366972e'
-var apiTasteDive = '380370-ListenWh-NO41ULTO'
+var submitButtonYear = document.getElementById('submitButtonYear')
+var oMDB = 'c366972e'
+var tasteDive = '380370-ListenWh-NO41ULTO'
 var cards = document.getElementById("cards")
 var cardVideo = document.getElementById("cardVideo")
-var data = " "
+
 // Search for items
 submitButton.addEventListener('click', function () {
 
     var movieSelection = document.getElementById('movieSelection').value;
 
     if (movieSelection == "") {
-        alert("Please add a movie to search");
+        alert("Please add a movie name to search");
     }
 
     movieSearch(movieSelection);
@@ -87,13 +89,14 @@ submitButton.addEventListener('click', function () {
 
 
 
-
 //-------------------FUNCTIONS ------------------------//
 
 function movieSearch(searchString) {
 
 
-    $.get(`https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?limit=1&info=1&q=movie:${searchString}&k=${apiTasteDive}`, function (data1) {
+    cards.innerHTML = '';
+    $.get(`https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?limit=1&info=1&q=movie:${searchString}&k=${tasteDive}`, function (data1) {
+
         console.log(data1);
         for (var j = 0; j < data1.Similar.Info.length; j++) {
             var name = data1.Similar.Info[j].Name;
@@ -102,22 +105,25 @@ function movieSearch(searchString) {
 
 
 
-            $.get(`https://www.omdbapi.com/?apikey=${apiKeyOMDB}&type:movie&s=${name}`, function (data) {
+
+            $.get(`https://www.omdbapi.com/?apikey=${oMDB}&type:movie&s=${name}`, function (data) {
+
                 console.log(data);
 
                 var poster = data.Search[0].Poster;
 
+                $.get(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=${name}&country=US&media=movie&limit=1`, function (iTunes) {
+                    var appleTv = JSON.parse(iTunes)
+                    console.log(appleTv);
+                    var rentMovie = appleTv.results[0].trackViewUrl;
 
-
-
-                var movieInfo =
-                    `
+                    var movieDetails =
+                        `
                 <div class="col-md-4">
-                    <div class="card m-3 mr-4">
-                        <img class="card-img-top" src="${poster}" alt="Card image cap">
+                    <div class="card rounded m-3 mr-4">
                         <div class="card-body">
-                            <h5 class="card-title">${name}</h5>
-        
+                            <h5 class="card-title">${name}</h5>    
+                            <img class="card-img" src="${poster}" data-lightbox="Poster" alt="Card image cap">
                         </div>
                     </div>
                 </div>
@@ -125,7 +131,12 @@ function movieSearch(searchString) {
                 <div class="embed-responsive embed-responsive-16by9 m-3">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${video}?rel=0" allowfullscreen></iframe>
                     </div>
-                    <div class="card m-3">
+
+                    <div class="itunes">
+                    <a href="${rentMovie}">
+                        <img alt="Apple TV" src="Apple.pdf"> </a>
+                        </div>
+                    <div class="card rounded m-3">
                     <div class="card-body">
                     <p class="card-text">${teaser}</p>
                     </div>
@@ -133,9 +144,14 @@ function movieSearch(searchString) {
                 
                 </div>
                 `
-                // not appending since there is no child but concatenating
-                cards.innerHTML += movieInfo;
+
+                    // not appending since there is no child but concatenating
+                    cards.innerHTML += movieDetails;
+
+                })
+
             })
         }
 
     })
+
