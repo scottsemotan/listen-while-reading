@@ -1,3 +1,4 @@
+
 var granimInstance = new Granim({
     element: '#canvas-complex',
     direction: 'left-right',
@@ -39,6 +40,49 @@ submitButton.addEventListener('click', function () {
     movieSearch(movieSelection);
 
 });
+
+var granimInstance = new Granim({
+    element: '#canvas-complex',
+    direction: 'left-right',
+    isPausedWhenNotInView: true,
+    states: {
+        "default-state": {
+            gradients: [
+                [
+                    { color: '#833ab4', pos: .2 },
+                    { color: '#fd1d1d', pos: .8 },
+                    { color: '#38ef7d', pos: 1 }
+                ], [
+                    { color: '#40e0d0', pos: 0 },
+                    { color: '#ff8c00', pos: .2 },
+                    { color: '#ff0080', pos: .75 }
+                ],
+            ]
+        }
+    }
+});
+
+var movieList = document.getElementById('movieList');
+var movieBody = document.getElementById('movieBody');
+var submitButton = document.getElementById('submitButton')
+var apiKeyOMDB = 'c366972e'
+var apiTasteDive = '380370-ListenWh-NO41ULTO'
+var cards = document.getElementById("cards")
+var cardVideo = document.getElementById("cardVideo")
+var data = " "
+// Search for items
+submitButton.addEventListener('click', function () {
+
+    var movieSelection = document.getElementById('movieSelection').value;
+
+    if (movieSelection == "") {
+        alert("Please add a movie to search");
+    }
+
+    movieSearch(movieSelection);
+
+});
+
 
 
 
@@ -95,5 +139,3 @@ function movieSearch(searchString) {
         }
 
     })
-}
-
