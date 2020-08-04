@@ -1,3 +1,4 @@
+
 var granimInstance = new Granim({
     element: '#canvas-complex',
     direction: 'left-right',
@@ -18,6 +19,7 @@ var granimInstance = new Granim({
         }
     }
 });
+
 
 var movieList = document.getElementById('movieList');
 var movieBody = document.getElementById('movieBody');
@@ -44,15 +46,14 @@ submitButton.addEventListener('click', function () {
 
 
 
-
-
-
 //-------------------FUNCTIONS ------------------------//
 
 function movieSearch(searchString) {
 
+
     cards.innerHTML = '';
     $.get(`https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?limit=1&info=1&q=movie:${searchString}&k=${tasteDive}`, function (data1) {
+
         console.log(data1);
         for (var j = 0; j < data1.Similar.Info.length; j++) {
             var name = data1.Similar.Info[j].Name;
@@ -61,7 +62,9 @@ function movieSearch(searchString) {
 
 
 
+
             $.get(`https://www.omdbapi.com/?apikey=${oMDB}&type:movie&s=${name}`, function (data) {
+
                 console.log(data);
 
                 var poster = data.Search[0].Poster;
@@ -85,6 +88,7 @@ function movieSearch(searchString) {
                 <div class="embed-responsive embed-responsive-16by9 m-3">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${video}?rel=0" allowfullscreen></iframe>
                     </div>
+
                     <div class="itunes">
                     <a href="${rentMovie}">
                         <img alt="Apple TV" src="Apple.pdf"> </a>
@@ -97,17 +101,17 @@ function movieSearch(searchString) {
                 
                 </div>
                 `
+
                     // not appending since there is no child but concatenating
                     cards.innerHTML += movieDetails;
 
                 })
+
             })
         }
 
     })
 
+
 }
-
-
-
 
