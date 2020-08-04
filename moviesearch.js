@@ -29,17 +29,23 @@ var tasteDive = '380370-ListenWh-NO41ULTO'
 var cards = document.getElementById("cards")
 
 
-// Search for items
+/// Search for items
 submitButton.addEventListener('click', function () {
-
     var movieSelection = document.getElementById('movieSelection').value;
-
     if (movieSelection == "") {
         alert("Please add a movie name to search");
     }
+    else {
+        movieSearch(movieSelection);
+    }
+});
 
-    movieSearch(movieSelection);
-
+//submit search value with return key
+movieSelection.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("submitButton").click();
+    }
 });
 
 
