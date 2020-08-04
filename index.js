@@ -84,4 +84,3 @@ if(formName && formEmail && formPass) {
 
 });
 
-

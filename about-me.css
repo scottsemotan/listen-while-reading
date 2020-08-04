@@ -1,0 +1,66 @@
+body {
+  position: relative;
+  text-align: center;
+}
+
+  #canvas-complex {
+    background: fixed;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+  #header {
+      text-align: center;
+      color: white;
+      padding: 15px;
+  }
+
+  .namePlate {
+      font-size: 25px;
+      text-align: center;
+      padding:30px;
+  }
+
+  .figure-caption {
+      text-align: center;
+      color: white;
+      padding: 10px;
+      width: 500px;
+      display: block;
+  }
+
+  #rhondaPic{
+    height: 300px;
+    width: 300px;
+    display: block;
+    align-content: center;
+    padding: 20px;
+    margin:auto;
+
+}
+
+#marcelPic{
+  height: 300px;
+  width: 300px;
+  display: block;
+  align-content: center;
+  padding: 20px;
+  margin:auto;
+}
+
+#scottPic{
+  height: 300px;
+  width: 300px;
+  display: block;
+  align-content: center;
+  padding: 20px;
+  margin:auto;
+}
+
