@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="moviesearch.css">
-    
-    <title>Search Page</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="lightbox/css/lightbox.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="moviesearch.css">
+
+  <title>Search Page</title>
 </head>
+
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="">Listen While Reading </a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about-me.html">About Us</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+  <div class="gradient">
+    <canvas id="canvas-complex"></canvas>
+  </div>
 
-<div class="gradient">
-<canvas id="canvas-complex"></canvas>
-</div>
-
-<div class= container>
-    
- 
-<div class="row mt-2">
-    <div class="col-4">
-    <div class="form-group">
-        <input type="search" class="form-control mr-sm-2" id="movieSelection" aria-describedby="" placeholder="Enter choice">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" id="siteName">Big City Trailers </a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about-me.html">About Us</a>
+        </li>
+      </ul>
     </div>
-</div>
-<div class="col-4">
-    <button type="submit" class="btn btn-outline-success my-2 my-sm-0" id="submitButton">Submit</button>
-</div>
-</div>
-      
-<br>
+  </nav>
+
+  <div class="container">
+
+    <div class="row mt-2">
+      <div class="col-4">
+        <div class="form-group">
+          <input type="search" class="form-control mr-sm-2" id="movieSelection" aria-describedby=""
+            placeholder="Enter A Movie">
+        </div>
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0" id="submitButton">Submit</button>
+      </div>
+    </div>
+    
 
     <!--- Area for cards --->
     <div id="movieBody">
-        <div class="card-deck" >
-            <div class="row" id="cards">
-                
-            
+      <div class="card-deck">
+        <div class="row" id="cards">
+
+        
         </div>
+      </div>
     </div>
-</div>
-<script src="granim.min.js"></script>
-<script src="moviesearch.js"></script>
+  </div>
+
+
+
+    <script src="granim.min.js"></script>
+    <script src="moviesearch.js"></script>
+    <script src="lightbox/js/lightbox.js"></script>
 </body>
+
 </html>
