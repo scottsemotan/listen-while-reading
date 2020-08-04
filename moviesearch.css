@@ -1,5 +1,3 @@
-
-
 body {
   background-color: black;
   
@@ -13,8 +11,7 @@ body {
 }
 
 #canvas-complex {
-  background: fixed;
-  position: absolute;
+  position: fixed;
   display: block;
   width: 100%;
   height: 100%;
@@ -23,34 +20,14 @@ body {
   bottom: 0;
   left: 0;
   
-body {
-    background-color: black;
-    
-}
-
-.card {
-    background-color: whitesmoke;
-}
-.card-img-top {
-    size: 80%;
-}
-
-#canvas-complex {
-    position: fixed;
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    
 }
 
 #siteName {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
-    color: whitesmoke;
+  font-family: "ITC Serif Gothic", Lato;;
+  font-size: 30px;
+  color: whitesmoke;
+}
 
+.appleLink {
+  width: 100px;
 }
