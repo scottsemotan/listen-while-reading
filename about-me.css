@@ -15,7 +15,11 @@ body {
     left: 0;
     z-index: -1;
 }
-
+#siteName {
+  font-family: "ITC Serif Gothic", Lato;;
+  font-size: 30px;
+  color: whitesmoke;
+}
   #header {
       text-align: center;
       color: white;
