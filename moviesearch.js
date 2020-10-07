@@ -1,10 +1,16 @@
 // granim.js library for animated gradient in background
 
 var granimInstance = new Granim({
-    element: '#canvas-complex',
+    element: '#canvas-image-blending',
     direction: 'left-right',
     isPausedWhenNotInView: true,
-    states: {
+    image : {
+        source: '/images/city.png',
+        position: ['center', 'bottom'],
+        blendingMode: 'multiply', 
+        stretchMode: ['stretch-if-smaller', 'none']
+    },
+    states : {
         "default-state": {
             gradients: [
                 [
@@ -16,7 +22,8 @@ var granimInstance = new Granim({
                     { color: '#ff8c00', pos: .2 },
                     { color: '#ff0080', pos: .75 }
                 ],
-            ]
+            ],
+            transitionSpeed: 7000
         }
     }
 });
@@ -25,7 +32,7 @@ var granimInstance = new Granim({
 var movieBody = document.getElementById('movieBody');
 var submitButton = document.getElementById('submitButton')
 var oMDB = 'c366972e'
-var tasteDive = '380370-ListenWh-NO41ULTO'
+var tasteDive = '380370-ListenWh-XTQM1QFI'
 var cards = document.getElementById("cards")
 
 
@@ -55,6 +62,7 @@ movieSelection.addEventListener("keyup", function (event) {
 function movieSearch(searchString) {
 
     cards.innerHTML = '';
+    
     $.get(`https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?limit=1&info=1&q=movie:${searchString}&k=${tasteDive}`, function (data1) {
         console.log(data1);
         for (var j = 0; j < data1.Similar.Info.length; j++) {

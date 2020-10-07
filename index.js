@@ -2,9 +2,15 @@
 // granim.js library for animated gradient in background
 
 var granimInstance = new Granim({
-  element: '#canvas-complex',
+  element: '#canvas-image-blending',
   direction: 'left-right',
   isPausedWhenNotInView: true,
+  image : {
+      source: '/images/city.png',
+      position: ['center', 'bottom'],
+      blendingMode: 'multiply', 
+      stretchMode: ['stretch-if-smaller', 'none']
+  },
   states : {
       "default-state": {
           gradients: [
@@ -17,7 +23,8 @@ var granimInstance = new Granim({
                   { color: '#ff8c00', pos: .2 },
                   { color: '#ff0080', pos: .75 }
               ],
-          ]
+          ],
+          transitionSpeed: 7000
       }
   }
 });
