@@ -10,7 +10,7 @@ body {
   size: 80%;
 }
 
-#canvas-image-blending {
+#canvas-image {
   position: absolute;
   display: block;
   width: 100%;
