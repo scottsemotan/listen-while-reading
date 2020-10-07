@@ -2,7 +2,7 @@
 // granim.js library for animated gradient in background
 
 var granimInstance = new Granim({
-  element: '#canvas-image',
+  element: '#canvas-image-blending',
   direction: 'left-right',
   isPausedWhenNotInView: true,
   image : {
